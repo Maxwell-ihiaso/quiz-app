@@ -1,0 +1,102 @@
+.onboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(99, 99, 100, .5);
+    color: #343434
+
+}
+
+.onboard-group {
+    width: 23.44rem;
+
+    background-color: #EBEBEB;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow:  0 17px 15px -9px rgb(0, 0, 0);
+    padding: 2rem;
+}
+
+.onboard-image-container {
+    width: 12.5rem;
+    max-width: 12.5rem;
+    height: 12.5rem;
+    max-height: 12.5rem;
+    overflow: hidden;
+}
+
+.onboard-image {
+    width: 100%;
+    height: auto;
+}
+
+.onboard-group > p {
+    margin: 2rem 0 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.onboard-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    border: none;
+    text-transform: capitalize;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    transition: all .2s linear;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    
+}
+
+.btn:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.btn.skip {
+    box-shadow: 6px 6px 12px #c5c5c5,
+    -6px -6px 12px #ffffff;
+}
+
+.btn.next {
+    border: 2px solid rgb(0, 0, 255);
+
+}
+
+.next::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: rgb(0, 0, 255);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.next:hover::before {
+    width: 105%;
+}
+

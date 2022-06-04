@@ -1,6 +1,6 @@
-import { IRoutes } from "./Interfaces/Index";
+import { IRoutes } from "./interfaces/Index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import routes from "./Routes/Index";
+import routes from "./routes/Index";
 import "./App.css";
 
 function App() {
