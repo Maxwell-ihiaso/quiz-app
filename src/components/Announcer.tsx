@@ -25,6 +25,13 @@ const Announcer = ({ page }: IRenderedPage) => {
           </div>
         </section>
       )}
+      {page === "quizpage" && (
+        <section className="announce-in-detail">
+          <div>
+            <h1>quiz it</h1>
+          </div>
+        </section>
+      )}
     </>
   );
 };

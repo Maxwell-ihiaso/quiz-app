@@ -1,4 +1,4 @@
-import { RiArrowLeftLine } from "react-icons/ri";
+import { RiArrowLeftLine, RiTimeLine } from "react-icons/ri";
 import { IRenderedPage } from "../interfaces/Index";
 
 const Header = ({ page }: IRenderedPage) => {
@@ -36,7 +36,14 @@ const Header = ({ page }: IRenderedPage) => {
               : "timer"
           }`}
         >
-          {page === "detailspage" || page === "homepage" ? "" : "timer"}
+          {page === "detailspage" || page === "homepage" ? (
+            ""
+          ) : (
+            <div>
+              <RiTimeLine />
+              <span>15:00</span>
+            </div>
+          )}
         </div>
       </nav>
     </header>
