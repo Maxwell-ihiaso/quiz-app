@@ -1,0 +1,61 @@
+/** 
+** This css references the css in the homepage section
+*  and the quiz details page
+*/
+
+
+.content-container.details.quiz {
+    margin-top: 2rem;
+}
+
+.quiz-content {
+
+}
+
+.quiz-number {
+
+}
+
+.quiz-number > div {
+
+}
+
+.quiz-number > div.active {
+
+}
+
+.quiz-container {
+
+}
+
+.quiz-question {
+
+}
+
+.quiz-options {
+
+}
+
+.quiz-options .option {
+    
+}
+
+.quiz-options .option > span {
+
+}
+
+.control-buttons {
+
+}
+
+.prev {
+
+}
+
+.submit {
+
+}
+
+.next {
+    
+}
