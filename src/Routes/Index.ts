@@ -1,9 +1,9 @@
-import { IRoutes } from "../Interfaces/Index";
-import ErrorPage from "../Pages/ErrorPage";
-import HomePage from "../Pages/HomePage";
-import QuizDetailsPage from "../Pages/QuizDetailsPage";
-import QuizPage from "../Pages/QuizPage";
-import QuizResultPage from "../Pages/QuizResultPage";
+import { IRoutes } from "../interfaces/Index";
+import ErrorPage from "../pages/ErrorPage";
+import HomePage from "../pages/HomePage";
+import QuizDetailsPage from "../pages/QuizDetailsPage";
+import QuizPage from "../pages/QuizPage";
+import QuizResultPage from "../pages/QuizResultPage";
 
 /**
  * Non-Authenticated Routes
@@ -13,14 +13,16 @@ const mainRoutes: IRoutes[] = [
   {
     path: "/",
     element: HomePage,
+    props: { page: "homepage" },
   },
-  {
-    path: "/quiz",
-    element: QuizPage,
-  },
+  // {
+  //   path: "/quiz",
+  //   element: QuizPage,
+  // },
   {
     path: "/quiz/:category",
     element: QuizPage,
+    props: { page: "quizpage" },
   },
   {
     path: "/quiz/result",
@@ -29,6 +31,7 @@ const mainRoutes: IRoutes[] = [
   {
     path: "/quiz/:category/details",
     element: QuizDetailsPage,
+    props: { page: "detailspage" },
   },
 ];
 

@@ -1,47 +1,76 @@
 import { RiArrowLeftLine, RiTimeLine } from "react-icons/ri";
 import { IRenderedPage } from "../interfaces/Index";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ page }: IRenderedPage) => {
+interface IHeaderProps {
+  page: IRenderedPage;
+  category?: string;
+  secondsLeft?: number;
+}
+const Header = ({ page, category, secondsLeft }: IHeaderProps) => {
+  const navigate = useNavigate();
+
   return (
     <header
-      className={`header-container ${page === "detailspage" && "details"}`}
+      className={`header-container ${
+        page.toString() === "detailspage" && "details"
+      }`}
     >
       {/* add details to class name on details page  */}
       <nav>
         {/* dynamically render the Header  */}
-        {page === "homepage" && (
+        {page.toString() === "homepage" && (
           <div className="menu-button">
             <span></span>
             <span></span>
             <span></span>
           </div>
         )}
-        {page === "detailspage" && (
+        {page.toString() === "detailspage" && (
           <div className="menu-button details">
-            <RiArrowLeftLine className="left-arrow" />
+            <RiArrowLeftLine
+              className="left-arrow"
+              onClick={() => navigate(-1)}
+            />
             <p>detail quiz</p>
           </div>
         )}
-        {page === "quizpage" && (
+        {page.toString() === "quizpage" && (
           <div className="menu-button details">
-            <RiArrowLeftLine className="left-arrow" />
-            <p>#Selected Quiz</p>
+            <RiArrowLeftLine
+              className="left-arrow"
+              onClick={() => navigate(-1)}
+            />
+            <p>{`${category} quiz`}</p>
           </div>
         )}
 
         <div
           className={`${
-            page === "detailspage" || page === "homepage"
+            page.toString() === "detailspage" || page.toString() === "homepage"
               ? "portfolio"
               : "timer"
           }`}
         >
-          {page === "detailspage" || page === "homepage" ? (
+          {page.toString() === "detailspage" ||
+          page.toString() === "homepage" ? (
             ""
           ) : (
             <div>
               <RiTimeLine />
-              <span>15:00</span>
+              {secondsLeft && (
+                <span>
+                  {`${
+                    secondsLeft < 1
+                      ? "00:00"
+                      : `0${Math.floor(secondsLeft / 60)}:${
+                          (secondsLeft % 60).toString().length === 2
+                            ? secondsLeft % 60
+                            : `0${secondsLeft % 60}`
+                        }`
+                  }`}
+                </span>
+              )}
             </div>
           )}
         </div>
