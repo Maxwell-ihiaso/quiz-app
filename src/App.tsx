@@ -2,7 +2,6 @@ import { IRoutes } from "./interfaces/Index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import routes from "./routes/Index";
 import "./App.css";
-import { useState } from "react";
 
 function App() {
   return (

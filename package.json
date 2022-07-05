@@ -1,6 +1,14 @@
 {
   "name": "quiz-app",
   "version": "0.1.0",
+  "author": "Maxwell Ihiaso",
+  "description": "a quiz app built with reactjs",
+  "keywords": [
+    "quiz",
+    "react",
+    "javascript",
+    "projects"
+  ],
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

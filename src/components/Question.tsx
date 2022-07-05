@@ -1,3 +1,4 @@
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { ILocalQuestion } from "../interfaces/Index";
 
 interface IOption {
@@ -9,12 +10,26 @@ interface IOption {
 interface IQuestionProps {
   question: ILocalQuestion;
   LocalQuestions: ILocalQuestion;
-  timerId: NodeJS.Timer | undefined;
+  timeoutRef: React.MutableRefObject<number | null>;
   setIsPaused: React.Dispatch<React.SetStateAction<boolean>>;
   setScoreCount: React.Dispatch<React.SetStateAction<number>>;
+  setShowAlert?: React.Dispatch<
+    React.SetStateAction<{
+      isShow: boolean;
+      isSuccess: boolean;
+      text: string;
+    }>
+  >;
+  setOngoingQuiz?: React.Dispatch<
+    React.SetStateAction<{
+      attemptedQuiz: ILocalQuestion[];
+      selectedOptions: (string | null)[];
+      correctOptions: string[];
+    }>
+  >;
 }
 
-const Option = ({ index, text, onClick }: IOption) => {
+const Option: React.FC<IOption> = ({ onClick, index, text }) => {
   return (
     <div className="option" onClick={onClick}>
       <span>{String.fromCharCode(index + 65)}</span>
@@ -26,11 +41,39 @@ const Option = ({ index, text, onClick }: IOption) => {
 const Question = ({
   question,
   LocalQuestions,
-  timerId,
+  timeoutRef,
   setIsPaused,
   setScoreCount,
+  setShowAlert,
+  setOngoingQuiz,
 }: IQuestionProps) => {
   const handleOptionClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // save attempted question to ongoing state
+    // save attempted question to ongoing state
+
+    /**
+     * CREATE A CONTINUE CLASS__
+     * add questions that has been answered
+     * Add the entire questions
+     * Add the selected option
+     * Add correct option.
+     *
+     * Activate the INCOMPLETE QUIZ
+     */
+    // if (e.currentTarget.textContent !== null) {
+    //   setOngoingQuiz!((prevState) => ({
+    //     ...prevState,
+    //     selectedOptions: [
+    //       ...prevState.selectedOptions,
+    //       e.currentTarget.textContent,
+    //     ],
+    //     correctOptions: [
+    //       ...prevState.correctOptions,
+    //       LocalQuestions.options[LocalQuestions.options.length - 1],
+    //     ],
+    //   }));
+    // }
+
     // Add an active class to the selected option
     e.currentTarget.classList.add("active");
 
@@ -40,6 +83,9 @@ const Question = ({
       LocalQuestions.options[LocalQuestions.options.length - 1]
     ) {
       setScoreCount((prevScore) => prevScore + 1);
+      setShowAlert!({ isShow: true, text: "Correct !", isSuccess: true });
+    } else {
+      setShowAlert!({ isShow: true, text: "Wrong !", isSuccess: false });
     }
 
     // Once an option has been selected, disable all children
@@ -62,7 +108,7 @@ const Question = ({
     // You can choose to inform the user if their option
     // was the correct answer
     setIsPaused(true);
-    clearTimeout(timerId);
+    clearTimeout(Number(timeoutRef.current));
   };
 
   return (

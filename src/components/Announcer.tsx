@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IRenderedPage } from "../interfaces/Index";
 import { RiStarSFill } from "react-icons/ri";
 

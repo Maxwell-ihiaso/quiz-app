@@ -26,6 +26,7 @@ const Header = ({ page, category, secondsLeft }: IHeaderProps) => {
             <span></span>
           </div>
         )}
+
         {page.toString() === "detailspage" && (
           <div className="menu-button details">
             <RiArrowLeftLine
@@ -35,7 +36,18 @@ const Header = ({ page, category, secondsLeft }: IHeaderProps) => {
             <p>detail quiz</p>
           </div>
         )}
+
         {page.toString() === "quizpage" && (
+          <div className="menu-button details">
+            <RiArrowLeftLine
+              className="left-arrow"
+              onClick={() => navigate(-1)}
+            />
+            <p>{`${category} quiz`}</p>
+          </div>
+        )}
+
+        {page.toString() === "quizresultpage" && (
           <div className="menu-button details">
             <RiArrowLeftLine
               className="left-arrow"
@@ -47,13 +59,16 @@ const Header = ({ page, category, secondsLeft }: IHeaderProps) => {
 
         <div
           className={`${
-            page.toString() === "detailspage" || page.toString() === "homepage"
+            page.toString() === "detailspage" ||
+            page.toString() === "homepage" ||
+            page.toString() === "quizresultpage"
               ? "portfolio"
               : "timer"
           }`}
         >
           {page.toString() === "detailspage" ||
-          page.toString() === "homepage" ? (
+          page.toString() === "homepage" ||
+          page.toString() === "quizresultpage" ? (
             ""
           ) : (
             <div>

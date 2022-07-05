@@ -1,0 +1,86 @@
+.result-container, .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.result {
+    flex-direction: column;
+}
+
+.result-container {
+    padding-top: 7rem;
+}
+
+.result h2 {
+    color: rgb(0, 78, 214);
+    text-transform: capitalize;
+}
+
+.result p {
+    color: #c4c4c4;
+    position: relative;
+}
+
+.result p:not(:first-child) {
+    display: flex;
+    gap: 1rem;
+}
+
+.result p:not(:first-child) span {
+    font-size: 1.2rem;
+}
+
+.result p span {
+    font-size: 2rem;
+    color: rgb(0, 78, 214);
+}
+
+.goHome {
+    background: rgb(0, 78, 254);
+    background: -moz-linear-gradient(90deg, rgba(0, 78, 254, 1) 22%, rgba(60, 158, 255, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 78, 254, 1) 22%, rgba(60, 158, 255, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 78, 254, 1) 22%, rgba(60, 158, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#004efe", endColorstr="#3c9eff", GradientType=1);
+    border: none;
+    padding: 1rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    align-self: center;
+    max-width: max-content;
+    border-radius: 1rem;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.goHome:hover {
+    transform: scale(0.95);
+}
+
+
+
+/**
+* TABLET COVERAGE
+* This css references the css in the homepage section
+* and the quiz details page
+*/
+@media only screen and (min-width: 568px) {
+    .result p {
+        font-size: 1.3rem;
+    }
+}
+
+
+
+/**
+*     LAPTOP COVERAGE
+* This css references the css in the homepage section
+* and quiz details page
+*/
+@media only screen and (min-width: 769px) {
+    .goHome {
+        max-width: 35rem;
+    }
+}
